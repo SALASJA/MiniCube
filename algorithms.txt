@@ -1,13 +1,31 @@
+#face D first by rotating Clockwise
+
 subA:D,R,D'2,R',B',R
 
-DAlpha:subA,D,subA'
+alpha:subA,D,subA'
 
-subB:R',B,R,B,R'
 
-RAlpha:subB,B,subB'
 
-subD:R2,B2
 
-RGamma:subD,R,subD'
 
-delta:D2,B2
+
+
+#face D first by rotating CounterClockwise
+
+subC:D',B',D,R
+
+gamma:subC,D,subC'
+
+
+subD:D',B2,R'
+
+delta:subD,B,subD'
+
+
+
+#face R first by rotating CounterClockwise
+
+subF:R',B,R,B,R'
+
+Feta:subF,B,subF'
+

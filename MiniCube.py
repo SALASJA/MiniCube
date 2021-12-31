@@ -7,9 +7,8 @@ class MiniCube(ExecutableMiniCube):
 			self._state = copy.deepcopy(state)
 			
 
-def main():
-	cube = MiniCube()
-
 if __name__ == "__main__":
-	main()
+	cube = MiniCube()
+	cube.load_file("algorithms.txt")
+	print(cube.get_operation_names())
 		

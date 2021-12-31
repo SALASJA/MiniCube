@@ -61,20 +61,30 @@ class ExecutableMiniCube(FaceableMiniCube):
 		self.reset()
 	
 	def load_operations(self, operations_list):
+		self._operations = copy.deepcopy(self._fundamental_operations)
 		for operation_name, subinstructions in operations_list:
 			self.new_operation(operation_name, subinstructions)
 	
 	def load_file(self, filename):
+		self.reset()
 		file = open(filename,"r")
 		operations_list = []
 		for line in file:
 			if line != "\n":
-				line = line.rstrip()
-				line = line.split(":")
-				line[1] = line[1].split(",")
-				operations_list.append(line)
-		self.load_operations(operations_list)
+				line = line.lstrip()
+				if line[0] != "#":
+					line = line.rstrip()
+					line = line.split(":")
+					line[1] = line[1].split(",")
+					operations_list.append(line)
+		
+		self._operations = copy.deepcopy(self._fundamental_operations)
+		try:
+			self.load_operations(operations_list)
+		except AssertionError as e:
+			print("loading file data failed! Operations reset to fundamentals: R, D, B")
 		file.close()
+		
 		
 	
 	def undo(self):
