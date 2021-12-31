@@ -18,7 +18,7 @@ class FaceableMiniCube(SimpleMiniCube):
 			return self.frontFaceString()
 		elif self.mode == "B":
 			return self.backFaceString()
-		return self.fullBodyString(self._state)
+		return self.fullCubeString(self._state)
 	
 	def set_str_mode(self, mode):
 		self.mode = mode
