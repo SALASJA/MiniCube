@@ -1,0 +1,1 @@
+Basically simulates a 2x2x2 Rubiks cube (aka a MiniCube).
