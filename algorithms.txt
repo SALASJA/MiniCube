@@ -1,3 +1,13 @@
-sub:R2,B2
-RGamma:sub,R,sub'
+subA:D,R,D'2,R',B',R
+
+DAlpha:subA,D,subA'
+
+subB:R',B,R,B,R'
+
+RAlpha:subB,B,subB'
+
+subD:R2,B2
+
+RGamma:subD,R,subD'
+
 delta:D2,B2

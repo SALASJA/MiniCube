@@ -62,10 +62,11 @@ class ExecutableMiniCube(FaceableMiniCube):
 		file = open(filename,"r")
 		operations_list = []
 		for line in file:
-			line = line.rstrip()
-			line = line.split(":")
-			line[1] = line[1].split(",")
-			operations_list.append(line)
+			if line != "\n":
+				line = line.rstrip()
+				line = line.split(":")
+				line[1] = line[1].split(",")
+				operations_list.append(line)
 		self.load_operations(operations_list)
 		file.close()
 		
@@ -74,16 +75,17 @@ class ExecutableMiniCube(FaceableMiniCube):
 		if len(self._recent_operations) == 0:
 			return
 		recent_operation = self.invert(self._recent_operations.pop())
-		self.execute([recent_operation], False)
+		return self.execute([recent_operation], False)
+		
 	
 	def clear_recent_operations(self):
 		self._recent_operations.clear()
 		
 	def __or__(self, values):
-		self.execute(values)
+		return self.execute(values)
 	
 	def __invert__(self): #not to be confused with self.invert, __invert__ will undo the most recent operation
-		self.undo()
+		return self.undo()
 		
 	def execute(self, instructions, saving_instructions = True):
 		assert isinstance(instructions, str) or isinstance(instructions, list)
@@ -100,7 +102,7 @@ class ExecutableMiniCube(FaceableMiniCube):
 			else: #it is a derived operation, and its a list in the self._operations dict, so we extend expanded_instructions
 				expanded_instructions.extend(self.expand(instruction))
 		self._execute_instructions(expanded_instructions)
-	
+		return self #this is so we can have clean interaction in the Python REPL shell
 	
 	
 	#uses recursion and i dont expect a stack over flow with this

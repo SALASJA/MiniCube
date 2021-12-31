@@ -3,6 +3,25 @@ from SimpleMiniCube import SimpleMiniCube
 class FaceableMiniCube(SimpleMiniCube):
 	def __init__(self):
 		super().__init__()
+		self.mode = None
+	
+	def __str__(self):
+		if self.mode == "D":
+			return self.downFaceString()
+		elif self.mode == "U":
+			return self.upFaceString()
+		elif self.mode == "R":
+			return self.rightFaceString()
+		elif self.mode == "L":
+			return self.leftFaceString()
+		elif self.mode == "F":
+			return self.frontFaceString()
+		elif self.mode == "B":
+			return self.backFaceString()
+		return self.fullBodyString(self._state)
+	
+	def set_str_mode(self, mode):
+		self.mode = mode
 	
 	def __getitem__(self,value):
 		rotation = 0
