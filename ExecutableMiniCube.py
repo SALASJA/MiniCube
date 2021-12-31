@@ -157,7 +157,7 @@ class ExecutableMiniCube(FaceableMiniCube):
 		instruction_name = self.__extract_name(instruction)
 		is_counter_clockwise = "'" in instruction
 		if is_counter_clockwise:
-			return  instruction_name.replace("'","")
+			return  instruction.replace("'","")
 		return instruction_name + "'" + (self._extractNumber(instruction) if instruction[-1].isnumeric() else "")
 		
 	def _execute_instruction(self, instruction):
