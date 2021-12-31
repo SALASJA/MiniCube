@@ -10,6 +10,12 @@ class ExecutableMiniCube(FaceableMiniCube):
 		self._recent_operations = []
 		self.saved_states = set()
 	
+	def reset(self):
+		super().reset()
+		self.clear_recent_operations()
+		self.clear_save_states()
+		return self #to show the state interactive in the python shell
+	
 	def right(self, num_quarter_turns = 1,  is_counter_clockwise = False):
 		for i in range(num_quarter_turns):
 			super().right(is_counter_clockwise)
