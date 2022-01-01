@@ -81,4 +81,3 @@
 	subF:R',B,R,B,R'
 
 	Feta:subF,B,subF'
-

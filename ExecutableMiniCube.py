@@ -70,7 +70,7 @@ class ExecutableMiniCube(FaceableMiniCube):
 		file = open(filename,"r")
 		operations_list = []
 		for line in file:
-			if line != "\n":
+			if not line.isspace():
 				line = line.lstrip()
 				if line[0] != "#":
 					line = line.rstrip()
