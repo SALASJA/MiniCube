@@ -1,31 +1,84 @@
+#load this file into the MiniCube object using the load_file function
+#calling the get_operation_names function will show all operations
+#execute an operation by using .execute(operation_name/list), or cube | operation_name/list
+#to undo do ~cube or cube.undo()
+#to reset, do cube.reset()
+
+
+#------------------ WHITE FACE CONSERVING ALGORITHMS ----------------
+#one problem is I keep looking at the white face, i need to be looking at the unsolved face
 #face D first by rotating Clockwise
+	
+	subsubA:D,R,D'2,R',B'
+	
+	
+	
+	subA:subsubA,R
 
-subA:D,R,D'2,R',B',R
-
-alpha:subA,D,subA'
-
-
-
-
-
-
-
-#face D first by rotating CounterClockwise
-
-subC:D',B',D,R
-
-gamma:subC,D,subC'
+	alpha:subA,D,subA'
 
 
-subD:D',B2,R'
 
-delta:subD,B,subD'
+	subB:D,B,D',R'
+	
+	beta:subB,B,subB'
+	
+	
+	
+	subC:D,B2,R
+	
+	gamma:subC,D,subC'
+	
+	
+	
+	subD:subsubA,B',R,D'2,R'
+	
+	delta:subD,B,subD'
+	
+	
+	
+	subE:D,R',B,D',B
+	
+	epsilon:subE,R,subE'
+	
+	
+	
+	subZ:D,B2,D',R',D'
+	
+	zeta:subZ,R,subZ'
+	
+	
+	
+#face D first by rotating CounterClockwise (converse algorithms)
+	csubsubA:D',R',B2,R,B
+	
+	csubA:csubsubA,R'
+	
+	calpha:csubA,B,csubA'
+
+
+	
+	csubB:D',B',D,R
+	
+	cbeta:csubB,D,csubB'
+
+
+
+	csubC:D',B'2,R'
+	
+	cgamma:csubC,B,csubC'
+	
+	
+	
+	csubD:csubsubA,B,R',B'2,R
+	
+	cdelta:csubD,B,csubD'
 
 
 
 #face R first by rotating CounterClockwise
 
-subF:R',B,R,B,R'
+	subF:R',B,R,B,R'
 
-Feta:subF,B,subF'
+	Feta:subF,B,subF'
 
