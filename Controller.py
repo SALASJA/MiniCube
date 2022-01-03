@@ -8,11 +8,7 @@ class Controller:
 		self._draw()
 		
 	def _assign_callbacks(self):
-		commands =  {"equal":self.reload, 
-		             "minus":self.reset, 
-		             "bracketleft":self.undo,
-		             "bracketright":self.execute, 
-		             "Return": self.execute,
+		commands =  {"Return": self.execute,
 		             "w":lambda: self.execute("B"),
 		             "e":lambda: self.execute("D"),
 		             "r":lambda: self.execute("R"),
