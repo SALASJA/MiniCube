@@ -4,11 +4,17 @@ class Controller:
 		self.view = view
 		self._assign_callbacks()
 		self.model.set_formatted(False)
-		self.view["parent"].bind("<Return>", lambda e: self.execute())
 		self.view["parent"].focus_set()
 		self._draw()
 		
 	def _assign_callbacks(self):
+		commands =  {"Up":self.reload, 
+		             "Down":self.reset, 
+		             "Left":self.undo,
+		             "Right":self.execute, 
+		             "Return": self.execute}
+		             
+		self.view["parent"].bind("<Key>", lambda e: commands[e.keysym]() if e.keysym in commands else print(e))
 		self.view["reset_button"]["command"] = self.reset
 		self.view["execute_button"]["command"] = self.execute
 		self.view["undo_button"]["command"] = self.undo

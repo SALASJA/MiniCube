@@ -38,6 +38,7 @@ class View:
 		self.statusbar.pack(side=tk.BOTTOM,fill=tk.X, anchor=tk.W)
 		self.parent = parent
 		self.widgets = {"parent":self.parent,
+						"entry":self.entry,
 						"canvas":self.canvas,
 						"data": self.var,
 						"execute_button": self.execute,
