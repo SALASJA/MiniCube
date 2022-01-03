@@ -29,7 +29,7 @@ class Controller:
 	def toggle_keyboard_mode(self):	
 		if str(self.view["canvas"].focus_get()) == ".!entry":
 			self.view["canvas"].focus()
-			self.view["statusbar"]["text"] = "keyboard mode off, click back on entry to turn on"
+			self.view["statusbar"]["text"] = "keyboard mode on, click back on entry to turn off"
 	
 	def reset(self):
 		print(self.model.reset())
