@@ -36,7 +36,9 @@ class View:
 		frame.pack()
 		self.statusbar = tk.Label(parent, text="",bd=1, relief=tk.SUNKEN)
 		self.statusbar.pack(side=tk.BOTTOM,fill=tk.X, anchor=tk.W)
-		self.widgets = {"canvas":self.canvas,
+		self.parent = parent
+		self.widgets = {"parent":self.parent,
+						"canvas":self.canvas,
 						"data": self.var,
 						"execute_button": self.execute,
 						"undo_button": self.undo,

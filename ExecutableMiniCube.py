@@ -117,7 +117,6 @@ class ExecutableMiniCube(FaceableMiniCube):
 		if isinstance(instructions, str):
 			instructions = instructions.replace(" ","")
 			instructions = instructions.split(",") #turns into a list automatically if no commas found
-			
 		assert self.valid(instructions)
 		if saving_instructions: #saving it in our history so we can undo, we se saving_instructions to False when undoing
 			self._recent_operations.extend(instructions)
