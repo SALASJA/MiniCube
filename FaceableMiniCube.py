@@ -4,6 +4,10 @@ class FaceableMiniCube(SimpleMiniCube):
 	def __init__(self):
 		super().__init__()
 		self.mode = None
+		self.formatted = True
+	
+	def set_formatted(self, formatted):
+		self.formatted = formatted
 	
 	def __str__(self):
 		if self.mode == "D":
@@ -28,20 +32,26 @@ class FaceableMiniCube(SimpleMiniCube):
 		if len(value) == 2:
 			rotation = int(value[1])
 			value = value[0]
-			
+		
+		result = self.fullCubeString(self._state)
 		if value == "D":
-			return self.downFaceString(rotation)
+			result = self.downFaceString(rotation)
 		elif value == "U":
-			return self.upFaceString(rotation)
+			result = self.upFaceString(rotation)
 		elif value == "R":
-			return self.rightFaceString(rotation)
+			result = self.rightFaceString(rotation)
 		elif value == "L":
-			return self.leftFaceString(rotation)
+			result = self.leftFaceString(rotation)
 		elif value == "F":
-			return self.frontFaceString(rotation)
+			result = self.frontFaceString(rotation)
 		elif value == "B":
-			return self.backFaceString(rotation)
-		return self.fullCubeString(self._state)
+			result = self.backFaceString(rotation)
+		
+		if not self.formatted:
+			result = result.replace(" ","").rstrip().split("\n")
+			result[0] = " " + result[0] + " "
+			result[3] = " " + result[3] + " "
+		return result
 	
 	
 	def downFaceString(self, rotation = 0):

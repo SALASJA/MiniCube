@@ -91,4 +91,4 @@
 
 #a new method which may actually lead me to discovering the last sub algorithm to actually
 #reliably solve the cube
-	omega:D,B,D',B,D,B'2
+	omega:D,B,D',B,D,B'2,D'

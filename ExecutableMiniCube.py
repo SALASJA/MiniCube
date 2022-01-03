@@ -67,13 +67,19 @@ class ExecutableMiniCube(FaceableMiniCube):
 	
 	def load_file(self, filename):
 		self.reset()
-		file = open(filename,"r")
+		try:
+			file = open(filename,"r")
+		except:
+			print("loading file data failed! Operations reset to fundamentals: R, D, B")
+			return False
+			
 		operations_list = []
 		for line in file:
 			if not line.isspace():
 				line = line.lstrip()
 				if line[0] != "#":
 					line = line.rstrip()
+					line = line.replace(" ","")
 					line = line.split(":")
 					line[1] = line[1].split(",")
 					operations_list.append(line)
@@ -83,7 +89,10 @@ class ExecutableMiniCube(FaceableMiniCube):
 			self.load_operations(operations_list)
 		except AssertionError as e:
 			print("loading file data failed! Operations reset to fundamentals: R, D, B")
+			file.close()
+			return False #it failed
 		file.close()
+		return True #it was able to open
 		
 		
 	
@@ -106,7 +115,9 @@ class ExecutableMiniCube(FaceableMiniCube):
 	def execute(self, instructions, saving_instructions = True):
 		assert isinstance(instructions, str) or isinstance(instructions, list)
 		if isinstance(instructions, str):
-			instructions = [instructions]
+			instructions = instructions.replace(" ","")
+			instructions = instructions.split(",") #turns into a list automatically if no commas found
+			
 		assert self.valid(instructions)
 		if saving_instructions: #saving it in our history so we can undo, we se saving_instructions to False when undoing
 			self._recent_operations.extend(instructions)
